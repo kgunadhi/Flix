@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *posterView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *synopsisLabel;
-@property (nonatomic, strong) NSString *key;
 
 @end
 
@@ -47,46 +46,14 @@
     [self.synopsisLabel sizeToFit];
 }
 
-- (IBAction)onPosterTap:(UITapGestureRecognizer *)sender {
-    [self performSegueWithIdentifier:@"trailerSegue" sender:sender];
-}
-
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    NSNumber *movieId = self.movie[@"id"];
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@",  @"https://api.themoviedb.org/3/movie/", movieId,
-                                    @"/videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US"]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-               
-               UIAlertController *networkAlert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The Internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
-               UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
-               [networkAlert addAction:cancelAction];
-               [self presentViewController:networkAlert
-                                  animated:YES completion:^{}];
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               
-               NSArray *videos = dataDictionary[@"results"];
-               for (NSDictionary *video in videos) {
-                   if ([video[@"type"] isEqualToString:@"Trailer"]) {
-                       self.key = video[@"key"];
-                       TrailerViewController *trailerViewController = [segue destinationViewController];
-                       trailerViewController.trailerKey = self.key;
-                       break;
-                   }
-               }
-           }
-        }];
-    [task resume];
+    TrailerViewController *trailerViewController = [segue destinationViewController];
+    trailerViewController.movieId = self.movie[@"id"];
 }
 
 @end

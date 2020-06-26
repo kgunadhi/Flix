@@ -145,7 +145,7 @@
                                         <rect key="frame" x="0.0" y="-88" width="414" height="350"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oq8-lM-sWx">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oq8-lM-sWx">
                                         <rect key="frame" x="6" y="158" width="133" height="192"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <gestureRecognizers/>
@@ -186,12 +186,11 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1o-Ch-W4c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="sBV-dO-JTd">
                     <connections>
-                        <action selector="onPosterTap:" destination="InU-U6-pr9" id="paO-Tt-XmW"/>
                         <segue destination="Zzj-xY-yqa" kind="presentation" identifier="trailerSegue" id="DHR-xZ-46d"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="132" y="1426"/>
+            <point key="canvasLocation" x="671" y="1545"/>
         </scene>
         <!--Trailer View Controller-->
         <scene sceneID="8zF-9i-R1n">
@@ -202,7 +201,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7PM-Pm-kQl">
-                                <rect key="frame" x="87" y="384" width="240" height="128"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -220,7 +219,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pUl-7A-O5I" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="2103"/>
+            <point key="canvasLocation" x="671" y="2222"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="phn-rz-n2G">
@@ -277,6 +276,9 @@
             <point key="canvasLocation" x="1228" y="68"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="JLv-jk-dM4"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="now_playing_tabbar_item" width="21" height="21"/>
         <image name="projector_tabbar_item" width="21" height="25"/>

@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface TrailerViewController : UIViewController
 
-@property (nonatomic, strong) NSString *trailerKey;
+@property (nonatomic, strong) NSNumber *movieId;
 
 @end
 
