@@ -7,6 +7,7 @@
 //
 
 #import "DetailsViewController.h"
+#import "TrailerViewController.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface DetailsViewController ()
@@ -31,27 +32,28 @@
     [self.posterView setImageWithURL:posterURL];
     
     NSString *backdropURLString = self.movie[@"backdrop_path"];
-    NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
+    if (![backdropURLString isEqual:[NSNull null]]) {
+        NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
     
-    NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
-    [self.backdropView setImageWithURL:backdropURL];
+        NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
+        [self.backdropView setImageWithURL:backdropURL];
+    }
     
     self.titleLabel.text = self.movie[@"title"];
     self.synopsisLabel.text = self.movie[@"overview"];
     
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
-    
 }
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    TrailerViewController *trailerViewController = [segue destinationViewController];
+    trailerViewController.movieId = self.movie[@"id"];
 }
-*/
 
 @end
