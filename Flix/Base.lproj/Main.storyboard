@@ -112,6 +112,7 @@
                                         <size key="customSize" width="202" height="263"/>
                                         <connections>
                                             <outlet property="posterView" destination="8zV-2d-301" id="Xd3-RA-2kW"/>
+                                            <segue destination="InU-U6-pr9" kind="show" id="7sH-PM-yXI"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
