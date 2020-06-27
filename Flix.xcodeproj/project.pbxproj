@@ -12,8 +12,8 @@
 		9B0B14C624A659DC001E273A /* TrailerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B0B14C524A659DC001E273A /* TrailerViewController.m */; };
 		9B5358B524A61F4E00BB6D70 /* MovieCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5358B424A61F4E00BB6D70 /* MovieCollectionCell.m */; };
 		9B5358B824A6263600BB6D70 /* MoviesGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B5358B724A6263600BB6D70 /* MoviesGridViewController.m */; };
+		9BABDB9424A717A900D2A1E1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BABDB9224A717A800D2A1E1 /* SceneDelegate.m */; };
 		9BAD37E324A3BF2800959BF7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAD37E224A3BF2800959BF7 /* AppDelegate.m */; };
-		9BAD37E624A3BF2800959BF7 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BAD37E524A3BF2800959BF7 /* SceneDelegate.m */; };
 		9BAD37EC24A3BF2800959BF7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BAD37EA24A3BF2800959BF7 /* Main.storyboard */; };
 		9BAD37EE24A3BF2900959BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BAD37ED24A3BF2900959BF7 /* Assets.xcassets */; };
 		9BAD37F124A3BF2900959BF7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BAD37EF24A3BF2900959BF7 /* LaunchScreen.storyboard */; };
@@ -33,11 +33,11 @@
 		9B5358B424A61F4E00BB6D70 /* MovieCollectionCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MovieCollectionCell.m; sourceTree = "<group>"; };
 		9B5358B624A6263600BB6D70 /* MoviesGridViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesGridViewController.h; sourceTree = "<group>"; };
 		9B5358B724A6263600BB6D70 /* MoviesGridViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MoviesGridViewController.m; sourceTree = "<group>"; };
+		9BABDB9224A717A800D2A1E1 /* SceneDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SceneDelegate.m; path = ../../../.Trash/SceneDelegate.m; sourceTree = "<group>"; };
+		9BABDB9324A717A800D2A1E1 /* SceneDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SceneDelegate.h; path = ../../../.Trash/SceneDelegate.h; sourceTree = "<group>"; };
 		9BAD37DE24A3BF2800959BF7 /* Flix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BAD37E124A3BF2800959BF7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9BAD37E224A3BF2800959BF7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9BAD37E424A3BF2800959BF7 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		9BAD37E524A3BF2800959BF7 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		9BAD37EB24A3BF2800959BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9BAD37ED24A3BF2900959BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BAD37F024A3BF2900959BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 				9BAD37FD24A3C52D00959BF7 /* Views */,
 				9BAD37E124A3BF2800959BF7 /* AppDelegate.h */,
 				9BAD37E224A3BF2800959BF7 /* AppDelegate.m */,
-				9BAD37E424A3BF2800959BF7 /* SceneDelegate.h */,
-				9BAD37E524A3BF2800959BF7 /* SceneDelegate.m */,
+				9BABDB9324A717A800D2A1E1 /* SceneDelegate.h */,
+				9BABDB9224A717A800D2A1E1 /* SceneDelegate.m */,
 				9BAD37EA24A3BF2800959BF7 /* Main.storyboard */,
 				9BAD37ED24A3BF2900959BF7 /* Assets.xcassets */,
 				9BAD37EF24A3BF2900959BF7 /* LaunchScreen.storyboard */,
@@ -271,11 +271,11 @@
 				9BD9574024A4105F00082CF3 /* MovieCell.m in Sources */,
 				9B5358B824A6263600BB6D70 /* MoviesGridViewController.m in Sources */,
 				9BAD37FC24A3C48100959BF7 /* MoviesViewController.m in Sources */,
+				9BABDB9424A717A900D2A1E1 /* SceneDelegate.m in Sources */,
 				9BB1ABAC24A4B13200C93172 /* DetailsViewController.m in Sources */,
 				9B5358B524A61F4E00BB6D70 /* MovieCollectionCell.m in Sources */,
 				9BAD37F424A3BF2900959BF7 /* main.m in Sources */,
 				9B0B14C624A659DC001E273A /* TrailerViewController.m in Sources */,
-				9BAD37E624A3BF2800959BF7 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
