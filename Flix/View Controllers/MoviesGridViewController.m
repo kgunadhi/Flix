@@ -27,7 +27,9 @@
     self.collectionView.delegate = self;
     
     [self fetchMovies];
-    
+}
+
+- (void)viewDidLayoutSubviews {
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
     
     layout.minimumInteritemSpacing = 10;
