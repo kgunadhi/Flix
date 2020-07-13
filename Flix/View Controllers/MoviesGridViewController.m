@@ -9,6 +9,7 @@
 #import "MoviesGridViewController.h"
 #import "MovieCollectionCell.h"
 #import "DetailsViewController.h"
+#import "MovieAPIManager.h"
 #import "UIImageView+AFNetworking.h"
 
 @interface MoviesGridViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
@@ -43,29 +44,34 @@
 }
 
 - (void)fetchMovies {
-    NSURL *const url = [NSURL URLWithString:@"https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed"];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];
-    NSURLSessionDataTask *task = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-           if (error != nil) {
-               NSLog(@"%@", [error localizedDescription]);
-               
-               UIAlertController *networkAlert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The Internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
-               UIAlertAction *reloadAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        [self fetchMovies];
-                   }];
-               [networkAlert addAction:reloadAction];
-               [self presentViewController:networkAlert
-                                  animated:YES completion:^{}];
-           }
-           else {
-               NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-               
-               self.movies = dataDictionary[@"results"];
+    __weak MoviesGridViewController *weakSelf = self;
+    MovieAPIManager *manager = [MovieAPIManager new];
+    [manager fetchNowPlaying:^(NSArray *movies, NSError *error) {
+        if (error != nil) {
+            UIAlertController *networkAlert = [UIAlertController alertControllerWithTitle:@"Cannot Get Movies" message:@"The Internet connection appears to be offline." preferredStyle:(UIAlertControllerStyleAlert)];
+            UIAlertAction *reloadAction = [UIAlertAction actionWithTitle:@"Try Again" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                [weakSelf fetchMovies];
+            }];
+            [networkAlert addAction:reloadAction];
+            [self presentViewController:networkAlert animated:YES completion:^{}];
+        }
+        else {
+               self.movies = movies;
                [self.collectionView reloadData];
-           }
-        }];
-    [task resume];
+        }
+    }];
+}
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
+    
+    cell.movie = self.movies[indexPath.item];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.movies.count;
 }
 
 #pragma mark - Navigation
@@ -76,31 +82,10 @@
     // Pass the selected object to the new view controller.
     UICollectionViewCell *tappedCell = sender;
     NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-    NSDictionary *movie = self.movies[indexPath.item];
+    Movie *movie = self.movies[indexPath.item];
     
     DetailsViewController *detailsViewController = [segue destinationViewController];
     detailsViewController.movie = movie;
-}
-
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    MovieCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MovieCollectionCell" forIndexPath:indexPath];
-    
-    NSDictionary *movie = self.movies[indexPath.item];
-    
-    NSString *const baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    cell.posterView.image = nil;
-    [cell.posterView setImageWithURL:posterURL];
-    cell.posterView.layer.cornerRadius = 7;
-    
-    return cell;
-}
-
-- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.movies.count;
 }
 
 @end

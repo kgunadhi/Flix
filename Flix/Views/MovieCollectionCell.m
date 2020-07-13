@@ -7,7 +7,18 @@
 //
 
 #import "MovieCollectionCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation MovieCollectionCell
+
+- (void)setMovie:(Movie *)movie {
+    // Set underlying private storage _movie since replacing default setter
+    _movie = movie;
+    self.posterView.image = nil;
+    if (self.movie.posterUrl != nil) {
+        [self.posterView setImageWithURL:self.movie.posterUrl];
+    }
+    self.posterView.layer.cornerRadius = 7;
+}
 
 @end

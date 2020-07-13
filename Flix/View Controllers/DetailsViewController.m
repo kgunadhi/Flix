@@ -25,25 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *const baseURLString = @"https://image.tmdb.org/t/p/w500";
-    NSString *posterURLString = self.movie[@"poster_path"];
-    NSString *fullPosterURLString = [baseURLString stringByAppendingString:posterURLString];
-    
-    NSURL *posterURL = [NSURL URLWithString:fullPosterURLString];
-    [self.posterView setImageWithURL:posterURL];
+    [self.posterView setImageWithURL:self.movie.posterUrl];
     self.posterView.layer.cornerRadius = 7;
     
-    NSString *backdropURLString = self.movie[@"backdrop_path"];
-    if (![backdropURLString isEqual:[NSNull null]]) {
-        NSString *fullBackdropURLString = [baseURLString stringByAppendingString:backdropURLString];
-    
-        NSURL *backdropURL = [NSURL URLWithString:fullBackdropURLString];
-        [self.backdropView setImageWithURL:backdropURL];
+    if (self.movie.backdropUrl != nil) {
+        [self.backdropView setImageWithURL:self.movie.backdropUrl];
     }
     
-    self.titleLabel.text = self.movie[@"title"];
-    self.synopsisLabel.text = self.movie[@"overview"];
-    self.dateLabel.text = self.movie[@"release_date"];
+    self.titleLabel.text = self.movie.title;
+    self.synopsisLabel.text = self.movie.synopsis;
+    self.dateLabel.text = self.movie.date;
     
     [self.titleLabel sizeToFit];
     [self.synopsisLabel sizeToFit];
@@ -57,7 +48,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     TrailerViewController *trailerViewController = [segue destinationViewController];
-    trailerViewController.movieId = self.movie[@"id"];
+    trailerViewController.movieId = self.movie.movieId;
 }
 
 @end
