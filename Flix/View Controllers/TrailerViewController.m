@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     NSString *urlString = [NSString stringWithFormat:@"%@/%@/%@",  @"https://api.themoviedb.org/3/movie", self.movieId,
-                           @"videos?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed&language=en-US"];
+                           @"videos?api_key="];
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10.0];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:nil delegateQueue:[NSOperationQueue mainQueue]];

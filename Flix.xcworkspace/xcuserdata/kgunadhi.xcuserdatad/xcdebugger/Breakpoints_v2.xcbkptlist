@@ -78,9 +78,9 @@
                   urlString = "file:///Users/kgunadhi/Documents/Flix/Flix/View%20Controllers/MoviesViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "404">
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "401">
                </Location>
                <Location
                   uuid = "19A2D110-96D1-4B62-B05E-8BC47DD7CBEA - 92a82f1c0289e0f4"
@@ -93,9 +93,9 @@
                   urlString = "file:///Users/kgunadhi/Documents/Flix/Flix/View%20Controllers/MoviesViewController.m"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "464">
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "444">
                </Location>
             </Locations>
          </BreakpointContent>
